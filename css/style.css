@@ -1,0 +1,14 @@
+
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+
+h1, h2, h3, h4, h5, h6 { font-family: 'Oswald'}
+h1 { font-size: 2rem;}
+
+body { background-color: #ffbd69;}
+main { padding: 0px 5%;}
+
+/****** header ******/
+#topHead img { width: 66px; height: 45px;}
+nav { background-color: #111d5e; text-align: center; display: flex; justify-content: space-around; padding: 10px}
+nav a { line-height: 2.7;}
+
