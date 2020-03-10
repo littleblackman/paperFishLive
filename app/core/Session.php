@@ -9,4 +9,5 @@ class Session
     public function getCredentials() {
         return $this->credentials;
     }
+    
 }

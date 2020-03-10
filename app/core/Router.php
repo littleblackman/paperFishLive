@@ -7,8 +7,9 @@ class Router
     private $request;
 
     // exemple d'url  monsite.fr/show/56/2020-02-21
+    // index.php?r=show/56/2020-02-21
     private $routes = [     
-                            'home' => ['controller' => 'Home', 'method' => 'index', 'vars' =>  'id', 'access' => 'private'],
+                            'home' => ['controller' => 'Home', 'method' => 'index', 'vars' =>  'id', 'access' => 'public'],
                             'show' => ['controller' => 'Home', 'method' => 'show' , 'vars' => 'id/date'],
 
     ];
@@ -32,7 +33,7 @@ class Router
             }
 
             if(isset($this->routes[$route]['access'])) {
-                $access = explode('/', $this->routes[$route]['access']); 
+                $access = $this->routes[$route]['access']; 
             } else {
                 $access = 'public';
             }
@@ -49,7 +50,6 @@ class Router
 
             $this->request = $request;
 
-
         } else {
             // 404
         }
@@ -58,7 +58,7 @@ class Router
 
     public function render() {
         $request = $this->request;
-
+        
         $controller = $request->getController();
         $method     = $request->getMethod();
 

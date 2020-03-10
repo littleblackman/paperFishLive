@@ -15,7 +15,6 @@ class Controller
         // créer la session
         $this->session = new Session();
 
-
         // vérifier les autorisations
         if(!$this->checkAccess()) $this->redirect('403');
 
