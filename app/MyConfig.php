@@ -33,6 +33,21 @@ class MyConfig
         define('CONTROLLER', ROOT.'src/controller/');
         define('VIEW', ROOT.'src/view/');
 
+        define('CONFIG', ROOT.'app/config/');
+        define('HELPER', CORE.'helper/');
+
+        define('MANAGER', ROOT.'src/model/manager/');
+        define('ENTITY', ROOT.'src/model/entity/');
+        define('SERVICE', ROOT.'src/service/');
+
+        $params = parse_ini_file(CONFIG.'params.ini', true);
+
+        define('DB_HOST', $params['bdd']['DB_HOST']);
+        define('DB_NAME', $params['bdd']['DB_NAME']);
+        define('DB_LOGIN', $params['bdd']['DB_LOGIN']);
+        define('DB_PWD', $params['bdd']['DB_PWD']);
+
+        require_once(CONFIG.'functions.php');
 
         // gérer autoload
         spl_autoload_register(array(__CLASS__, 'autoload'));
@@ -45,6 +60,12 @@ class MyConfig
             include_once(CORE.$class.'.php');
         } else if (file_exists(CONTROLLER.$class.'.php')) {
             include_once(CONTROLLER.$class.'.php');
+        } else if (file_exists(MANAGER.$class.'.php')) {
+            include_once(MANAGER.$class.'.php');
+        } else if (file_exists(ENTITY.$class.'.php')) {
+            include_once(ENTITY.$class.'.php');
+        } else if (file_exists(SERVICE.$class.'.php')) {
+            include_once(SERVICE.$class.'.php');
         }
     }
 

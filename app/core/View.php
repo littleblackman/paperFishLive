@@ -12,8 +12,7 @@ class View
 
     public function render($datas = []) {
 
-        // ['id' => 38, 'name' => 'John Doe'];  1 array
-        // transformer $id = 38    et name = 'JD'; 2 var
+        use_helper('front');
         
         extract($datas);
 
@@ -25,11 +24,12 @@ class View
 
         include_once(VIEW.'template.php');
 
-
-
     }
 
     public function redirect($route) {
-        header("Location;".HOST.$route);
+
+        use_helper('front');
+        $path = path($route);
+        header("Location:".$path);
     }
 }

@@ -19,7 +19,8 @@
         <nav>
             <img src="<?= IMG ;?>paperfish.png" alt="logo de l'application Paper Fish" />
             <a href="#">Home</a>
-            <a href="#">Liste</a>
+            <a href="<?= path('login');?>">Se connecter</a>
+            <a href="<?= path('register');?>">Créer son compte</a>
         </nav>
     </header>
 

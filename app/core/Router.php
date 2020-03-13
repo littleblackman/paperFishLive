@@ -6,18 +6,14 @@ class Router
 
     private $request;
 
-    // exemple d'url  monsite.fr/show/56/2020-02-21
-    // index.php?r=show/56/2020-02-21
-    private $routes = [     
-                            'home' => ['controller' => 'Home', 'method' => 'index', 'vars' =>  'id', 'access' => 'public'],
-                            'show' => ['controller' => 'Home', 'method' => 'show' , 'vars' => 'id/date'],
-
-    ];
+    private $routes;
 
 
     public function __construct() {
 
-        (isset($_GET['r'])) ? $action = $_GET['r'] : $action = "home";  // $action = show/56/2019
+        (isset($_GET['r'])) ? $action = $_GET['r'] : $action = "home.html";
+
+        $this->routes = Route::createRoutesArray();
 
         $route = $this->getRoute($action);
 
@@ -59,7 +55,7 @@ class Router
     public function render() {
         $request = $this->request;
         
-        $controller = $request->getController();
+        $controller = $request->getController().'Controller';
         $method     = $request->getMethod();
 
         $currentController = new $controller($request);
