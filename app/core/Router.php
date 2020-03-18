@@ -38,10 +38,12 @@ class Router
 
         } else {
             
-            $route      = 'error404';
+            ($route == "403") ? $extension = "403" : $extension = "404";
+
+            $route      = 'error'.$extension;
             $params     = [];
             $controller = "Error";
-            $method     = "index404";
+            $method     = "index".$extension;
             $access     = "public";
         }
 

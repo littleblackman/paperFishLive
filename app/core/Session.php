@@ -4,14 +4,8 @@
 class Session
 {
 
-    private $credentials = ['public', 'private'];
-
     public function __construct() {
         $this->flashMessage = new FlashMessage();
-    }
-
-    public function getCredentials() {
-        return $this->credentials;
     }
 
     public function initUserSession($user) {
@@ -20,7 +14,8 @@ class Session
         $_SESSION['role']    = $user->getRole();
         $_SESSION['auth']    = 1;
         $_SESSION['username']= $user->getUsername();
-        $_SESSION['initials']=$user->getInitials();
+        $_SESSION['initials']= $user->getInitials();
+        $_SESSION['access']  = $user->getAccessArray();
 
         // add cookie
         $identifiant  = base64_encode($user->getEmail().'(paperFish)'.$user->getPassword());
@@ -81,5 +76,9 @@ class Session
 
     public function setFlashMessage($message, $type = "default") {
         $this->getFlashMessage()->setMessage($message, $type);
+    }
+
+    public function getAccess() {
+        return $_SESSION['access'];
     }
 }

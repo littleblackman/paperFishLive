@@ -34,10 +34,10 @@ abstract class Controller
     }
 
     public function checkAccess() {
-        $credentials = $this->session->getCredentials();
-        if(!in_array($this->request->getAccess(), $credentials)) return false;
-        return true;
 
+        if($this->request->getAccess() == 'public') return true;
+        if(in_array($this->request->getAccess(), $this->session->getAccess())) return true;
+        return false;
     }
 
     public function redirect($route) {

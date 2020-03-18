@@ -41,11 +41,9 @@ class MyConfig
         define('SERVICE', ROOT.'src/service/');
         define('MODEL', ROOT.'src/model/');
 
-
-
         // define const params
         $params = parse_ini_file(CONFIG.'params.ini', true);
-
+        
         define('DB_HOST', $params['bdd']['DB_HOST']);
         define('DB_NAME', $params['bdd']['DB_NAME']);
         define('DB_LOGIN', $params['bdd']['DB_LOGIN']);

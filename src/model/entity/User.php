@@ -71,4 +71,13 @@ class User extends BaseEntity
         return $this->role;
     }
 
+    public function addAccess($access) {
+        $this->accesss[] = $access;
+    }
+
+    public function getAccessArray()
+    {
+        return $this->accesss;
+    }
+
 }

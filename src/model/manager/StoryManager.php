@@ -114,8 +114,6 @@ class StoryManager extends BddManager
         $story->setGenresIdList(implode('-', $genreArray));
         $story->setThemes($themes);
         $story->setThemesIdList(implode('-', $themeArray));
-
-
         return $story;
     }
 

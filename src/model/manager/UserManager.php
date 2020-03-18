@@ -40,6 +40,17 @@ class UserManager extends BddManager
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         if(!$result) return null;
         $user = new User($result);
+
+        $query = "SELECT * FROM role_access WHERE role = :role";
+        $stmt = $this->prepare($query);
+        $stmt->bindValue(':role', $user->getRole());
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach($results as $r) {
+            $user->addAccess($r['access']);
+        }
+
         return $user;
     }
 

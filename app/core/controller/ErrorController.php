@@ -8,4 +8,9 @@ class ErrorController extends Controller
         $this->pathTemplate(CORE.'template/');
         return $this->render('error404');
     }
+
+    public function index403() {
+        $this->pathTemplate(CORE.'template/');
+        return $this->render('error403');
+    }
 }
