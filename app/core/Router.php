@@ -8,10 +8,9 @@ class Router
 
     private $routes;
 
-
     public function __construct() {
 
-        (isset($_GET['r'])) ? $action = $_GET['r'] : $action = "home.html";
+        (isset($_GET['r'])) ? $action = $_GET['r'] : $action = "";
 
         $this->routes = Route::createRoutesArray();
 
@@ -37,18 +36,23 @@ class Router
             $params = $this->getParams($action, $vars);
 
 
-            $request = new Request();
-            $request->setRoute($route);
-            $request->setParams($params);
-            $request->setController($controller);
-            $request->setMethod($method);
-            $request->setAccess($access);
-
-            $this->request = $request;
-
         } else {
-            // 404
+            
+            $route      = 'error404';
+            $params     = [];
+            $controller = "Error";
+            $method     = "index404";
+            $access     = "public";
         }
+
+        $request = new Request();
+        $request->setRoute($route);
+        $request->setParams($params);
+        $request->setController($controller);
+        $request->setMethod($method);
+        $request->setAccess($access);
+
+        $this->request = $request;  
 
     }
 
@@ -70,32 +74,30 @@ class Router
     public function getParams($action, $vars) {
      
         $params = [];
-
-        // get
-
         $elements = explode('/', $action);
-        unset($elements[0]);                     //   56/2019
+        unset($elements[0]);                
 
-        foreach($vars as $key => $var) {        //id/date
+        foreach($vars as $key => $var) {
             if(isset($elements[$key+1])) {
-                $params[$var] = $elements[$key + 1];
+                $params[$var] = $this->validData($elements[$key + 1]);
             }
         }
-
-        // id => 56 et date => 2019
-
-
-        // post
 
         if($_POST) {
             foreach($_POST as $key => $val ) {
-                $params[$key] = $val; 
+                $params[$key] = $this->validData($val); 
             }
         }
 
-
         return $params;
+    }
 
+    public function validData($datas) {
+        if(is_array($datas)) return $datas;
+        $datas = trim($datas);
+        $datas = stripslashes($datas);
+        $datas = htmlspecialchars($datas);
+        return $datas;
     }
 
 }

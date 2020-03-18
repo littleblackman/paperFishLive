@@ -22,7 +22,6 @@ class Request
         return $this->route;
     }
 
-
     public function setController($controller)
     {
         $this->controller = $controller;
@@ -32,7 +31,6 @@ class Request
     public function getController() {
         return $this->controller;
     }
-
 
     public function setMethod($method)
     {
@@ -44,7 +42,6 @@ class Request
         return $this->method;
     }
 
-
     public function setParams($params)
     {
         $this->params = $params;
@@ -55,12 +52,9 @@ class Request
         return $this->params;
     }
 
-
-    // dans le controller $request->get('id');
     public function get($param) {
         return $this->params[$param];
     }
-
 
     public function setAccess($access)
     {

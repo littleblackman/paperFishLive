@@ -4,10 +4,13 @@
 
     <form action="<?= path('createUser');?>" method="post">
 
-        <input type="email" name="data[email]" placeholder="email"/>
-        <input type="password" name="data[password]" placeholder="password"/>
+        <input type="text" name="data[firstname]" placeholder="Prénom" required/>
+        <input type="text" name="data[lastname]" placeholder="Nom" required/>
 
-        <input type="submit" class="btn" name="créer" />
+        <input type="email" name="data[email]" placeholder="E-mail" required/>
+        <input type="password" name="data[password]" placeholder="Mot de passe" required/>
+
+        <input type="submit" class="btn btn-width" name="Créer" />
 
     </form>
 

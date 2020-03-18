@@ -39,13 +39,19 @@ class MyConfig
         define('MANAGER', ROOT.'src/model/manager/');
         define('ENTITY', ROOT.'src/model/entity/');
         define('SERVICE', ROOT.'src/service/');
+        define('MODEL', ROOT.'src/model/');
 
+
+
+        // define const params
         $params = parse_ini_file(CONFIG.'params.ini', true);
 
         define('DB_HOST', $params['bdd']['DB_HOST']);
         define('DB_NAME', $params['bdd']['DB_NAME']);
         define('DB_LOGIN', $params['bdd']['DB_LOGIN']);
         define('DB_PWD', $params['bdd']['DB_PWD']);
+
+        define('ENV', $params['app']['env']);
 
         require_once(CONFIG.'functions.php');
 
@@ -66,6 +72,10 @@ class MyConfig
             include_once(ENTITY.$class.'.php');
         } else if (file_exists(SERVICE.$class.'.php')) {
             include_once(SERVICE.$class.'.php');
+        }else if (file_exists(CORE.'controller/'.$class.'.php')) {
+            include_once(CORE.'controller/'.$class.'.php');
+        } else if (file_exists(MODEL.'validator/'.$class.'.php')) {
+            include_once(MODEL.'validator/'.$class.'.php');
         }
     }
 

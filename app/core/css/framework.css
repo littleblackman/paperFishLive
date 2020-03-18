@@ -1,0 +1,4 @@
+#flashMessageBar { position: absolute; width: 100%; font-size: 1.2em; z-index: 500}
+.flashMessageBarContent { padding: 10px 30px; box-shadow: 1px 1px 1px black; display: none; border-radius: 10px; margin: 20px;}
+.success { color: black; background-color: #b2dfdb;}
+.error { color: white; background-color: #ef9a9a;}

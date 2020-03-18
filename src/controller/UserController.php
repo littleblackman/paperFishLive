@@ -9,33 +9,30 @@ class UserController extends Controller
     public function __construct($request) {
         parent::__construct($request);
         $this->userManager = new UserManager();
-        $this->authenticatorService = new AuthenticatorService();
+        $this->authenticatorService = new AuthenticatorService($this->session);
     }
 
     public function create()
     {
         $data = $this->request->get('data');
-        $this->userManager->create($data);
-        return $this->redirect('home');
+        $result = $this->userManager->save($data);
+        $this->session->setFlashMessage($result[0], $result[1]);
+
+        if($result[1] == "success") {
+            return $this->redirect('login');
+        } else {
+            return $this->redirect('register');
+        }
     }
 
     public function auth() {
-
         $data = $this->request->get('data');
+        if(!$this->authenticatorService->auth($data)) return $this->redirect('login');
+        return $this->redirect('home');
+    }
 
-        // récupérer le user via son email
-        if(!$user = $this->userManager->findByEmail($data['email'])) {
-            echo 'false'; exit;
-            return  $this->redirect('login'); // avec un message;
-        }
-
-        $this->authenticatorService->auth($user, $data['password']);
-
-        // authentifier 
-
-        // si echec return home avec message
-
-        // si oui return avec message
-
+    public function logout() {
+        $this->session->destroy();
+        return $this->redirect('home');
     }
 }
