@@ -1,7 +1,5 @@
 <?php
 
-
-
 class GenreManager extends BddManager
 {
    

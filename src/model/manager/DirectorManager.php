@@ -26,11 +26,10 @@ class DirectorManager extends BddManager
         $stmt->bindValue(':information', $object->getInformation());
         if($object->getId()) $stmt->bindValue(':id', $object->getId());
         $stmt->execute();
+ 
+        $object = $this->updateObjectPersisted($object);
 
-        $lastId = $this->getLastInsertId();
-        $director = $this->find($lastId);
-
-        return $director;
+        return $object;
 
     }
 }

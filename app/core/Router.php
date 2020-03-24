@@ -16,6 +16,7 @@ class Router
 
         $route = $this->getRoute($action);
 
+
         if(key_exists($route, $this->routes)) {
 
             $controller = $this->routes[$route]['controller'];

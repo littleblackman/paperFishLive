@@ -10,7 +10,6 @@ class FlashMessage
 
     public function setMessage($message, $type = "default")
     {
-          $flashMessage =  $_SESSION['flashMessage'];
           $flashMessage[$type][] = $message;
           $_SESSION['flashMessage'] = $flashMessage;
     }

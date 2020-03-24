@@ -22,11 +22,15 @@ class StoryController extends Controller
 
     public function edit() {
         $story = $this->storyManager->findBySlug($this->request->get('slug'));
+        if(!$this->isOwner($story)) return $this->redirect('403');
         $this->render('story/create', ['story' => $story]);
     }
 
     public function show() {
         $story = $this->storyManager->findBySlug($this->request->get('slug'));
+
+        // check if is user is allowed to show
+
         $this->render('story/show', ['story' => $story]);
     }
 
@@ -50,15 +54,20 @@ class StoryController extends Controller
         if ($storyData['type'] == "litterature") {
             $author = new Author($authorData);
             $author = $author->save();
-            $storyData['author'] = $author;
+            $storyData['author_id'] = $author->getId();
         } else {
             $director = new Director($directorData);
             $director = $director->save();
-            $storyData['director'] = $director;
+            $storyData['director_id'] = $director->getId();
         }
         $story = new Story($storyData);
 
-        ($story->getId()) ? $text = "modifié" : "créé";
+        if($story->getId()) {
+            $text = "modifié"; 
+           // if(!$this->isOwner($story)) return $this->redirect('403');
+        }  else {
+            $text=  "créé";
+        }
         $story = $story->save();
 
         if(!$story) {

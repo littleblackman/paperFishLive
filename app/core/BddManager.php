@@ -21,12 +21,50 @@ abstract class BddManager
         return $this->bdd;
     }
 
+    public function makeQuery($object, $setString, $flagCreation = false) {
+
+        if($flagCreation) {
+            $setString .= " ,
+            owner_id = :owner_id,
+            created_at = :created_at,
+            updated_at = :updated_at";
+        }
+
+        if($object->getId()) {
+            $query = " UPDATE ".$this->getTableName()." SET ".$setString." WHERE id = :id ";
+        } else  {
+            $query = "INSERT INTO ".$this->getTableName()." SET ".$setString;
+        }
+        return $query;
+    }
+
+    public function bindFlagCreation($object, $stmt) {
+        $stmt->bindValue(':owner_id', $this->session->getUserId());
+        $stmt->bindValue(':updated_at', date("Y-m-d H:i:s"));
+        if ($object->getId()) {
+            $stmt->bindValue(':created_at', $object->getCreatedAt()->format('Y-m-d H:i:s'));
+        } else {
+            $stmt->bindValue(':created_at', date("Y-m-d H:i:s"));
+        }
+        return $stmt;
+    }
+
     protected function prepare($query) {
         return $this->connexion()->prepare($query);
     }
 
     protected function getLastInsertId() {
         return $this->connexion()->lastInsertId();
+    }
+
+    public function updateObjectPersisted($object) {
+        if($object->getId()) {
+            $object_id = $object->getId();
+         } else {
+            $object_id =  $this->connexion()->lastInsertId();
+         } 
+         $object = $this->find($object_id);
+         return $object;
     }
 
     public function find($id) {
@@ -41,6 +79,22 @@ abstract class BddManager
         $object = new $entity($data);
 
         return $object;
+    }
+
+    public function findAll($order_by = "name ASC") {
+        $table = $this->getTableName();
+        $entity =$this->getEntityName();
+        $query = "SELECT * FROM ".$table;
+        $query .= " ORDER BY ".$order_by;
+        $stmt = $this->prepare($query);
+        $stmt->execute();
+        $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach($datas as $data) {
+            $object = new $entity($data);
+            $objects[] = $object;
+        }
+        return $objects;
     }
 
     public function delete($objectId) {

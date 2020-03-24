@@ -15,11 +15,12 @@ abstract class Controller
 
         // créer la session
         $session = new Session();
+        $session->setRequest($request);
         $this->session = $session;
         $this->view = new View($session);
 
-        // vérifier les autorisations
-        if(!$this->checkAccess()) $this->redirect('403');
+         // check security and auth
+         $this->checkAndInitApp();
 
     }
 
@@ -33,6 +34,33 @@ abstract class Controller
         $myView->render($datas);
     }
 
+    public function checkAndInitApp() {
+
+        // check if user not logged, try to connect
+        if(!$this->session->isLogged()) {
+            if(isset($_COOKIE['identifiant'])) {
+                $identifiant = base64_decode($_COOKIE['identifiant']);
+                $elements = explode('(paperFish)', $identifiant);
+                $email = $elements[0];
+                $pwd   = $elements[1];
+                $authentificationService = new AuthenticatorService($this->session);
+                if($authentificationService->autoconnect($email, $pwd)) {
+                    $this->redirect($this->request->getRoute());
+                }
+            }
+        }
+
+        // check if user is authorized
+        if(!$this->checkAccess()) {
+          $this->redirect("login");
+        }
+
+        // if user logged redirect to the home private
+        if($this->request->getRoute() == "" && $this->session->isLogged()) {
+          $this->redirect("dashboard");
+        }
+  }
+
     public function checkAccess() {
 
         if($this->request->getAccess() == 'public') return true;
@@ -40,7 +68,12 @@ abstract class Controller
         return false;
     }
 
-    public function redirect($route) {
+    public function isOwner($object) {
+        if($this->session->getUserId() != $object->getOwnerId()) return false;
+        return true;
+    }
+
+    public function redirect($route) { 
         $this->view->redirect($route);
     }
 

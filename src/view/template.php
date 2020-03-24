@@ -14,14 +14,37 @@
     <meta name="robots" content="index,follow" />
 
     <!-- favicon  -->
+    <link rel="apple-touch-icon" sizes="57x57" href="<?= ASSETS;?>favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="<?= ASSETS;?>favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="<?= ASSETS;?>favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?= ASSETS;?>favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="<?= ASSETS;?>favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="<?= ASSETS;?>favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="<?= ASSETS;?>favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="<?= ASSETS;?>favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= ASSETS;?>favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="<?= ASSETS;?>favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= ASSETS;?>favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="<?= ASSETS;?>favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= ASSETS;?>favicon/favicon-16x16.png">
+    <link rel= "manifest" href= "<?= HOST;?>manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="<?= ASSETS;?>favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 
 
      <!-- opengraph --->
-
+    <meta property="og:title" content="PaperFish, Outil de création de fiches" />
+    <meta property="og:type" content="application" />
+    <meta property="og:url" content="<?= $app_session->getRequest()->getAbsoluteUrl();?>" />
+    <meta property="og:image" content="<?= IMG;?>paperfish.png" />
 
 
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <!-- CSS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -33,6 +56,7 @@
 
     <script src="https://unpkg.com/gojs/release/go-debug.js"></script>
 
+    <script src="<?= JS;?>textareaAutoResize.js"></script>
 
 </head>
 <body>
@@ -60,7 +84,7 @@
         </nav>
         <div id="contentMenu">
                 <div class="collection">
-                        <a class="collection-item" href="<?= path('definition');?>">Les définitions</a>
+                        <a class="collection-item" href="<?= path('sheet');?>">Les définitions</a>
                         <a class="collection-item" href="<?= path('story');?>">Les récits</a>
                         <a class="collection-item" href="<?= path('logout');?>">Déconnexion</a>
                 </div>
@@ -71,9 +95,36 @@
         <?= $contentPage ;?>
     </main>
 
+
+  <footer class="page-footer" style="margin-top: 200px">
+    <div class="container" style="font-size: 0.7em">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">PAPER FISH</h5>
+          <p class="grey-text text-lighten-4">
+              Application de créations de fiches.<br/>Partagez le lien à vos amis pour réviser.
+          </p>
+          <h5 class="white-text">Réseaux Sociaux</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" target="_blank" href="https://www.etsik.com">etsik</a></li>
+            <li><a class="grey-text text-lighten-3" target="_blank" href="https://www.facebook.com/etsikDigital/">Facebook</a></li>
+            <li><a class="grey-text text-lighten-3" target="_blank" href="https://www.instagram.com/sandyetsik/">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright" style="display: flex; font-size: 0.8em">
+      <div class="container">
+      © 2019 copyright etsik
+      <a class="grey-text text-lighten-4 right" target="_blank" href="http://www.littleblackman.me">le site de litteblackman</a>
+      </div>
+    </div>
+  </footer>
+
   <script src="<?= JS ;?>materialize.js"></script>
   <script src="<?= JS ;?>init.js"></script>
   <script src="<?= JS ;?>main.js"></script>
+
   <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 </body>

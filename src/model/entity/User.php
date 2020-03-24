@@ -23,7 +23,7 @@ class User extends BaseEntity
     }
 
     public function getLastname() {
-        return $this->lastname;
+        return ucfirst($this->lastname);
     }
 
     public function setLastname($lastname) {
@@ -31,7 +31,7 @@ class User extends BaseEntity
     }
 
     public function getFirstname() {
-        return $this->firstname;
+        return ucfirst($this->firstname);
     }
 
     public function setFirstname($firstname) {
@@ -40,6 +40,10 @@ class User extends BaseEntity
 
     public function getUserName(){
         return $this->getFirstname().' '.ucfirst($this->getLastname()[0]).'.';
+    }
+
+    public function getFullname() {
+        return $this->getFirstname().' '.$this->getLastname();
     }
 
     public function getInitials() {

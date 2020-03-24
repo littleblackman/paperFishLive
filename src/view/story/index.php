@@ -11,7 +11,7 @@
 </form>
 
 
-<h2>Vos dernières fiches</h2>
+<h2>Vos fiches</h2>
 
 <?php if(isset($storysUser)):?>
     <?php $storys = $storysUser;?>

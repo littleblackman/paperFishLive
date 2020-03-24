@@ -197,8 +197,6 @@ class StoryManager extends BddManager
         $stmt->bindValue(':owner_id', $this->session->getUserId());
         $stmt->bindValue(':updated_at', date("Y-m-d H:i:s"));
 
-        echo $story->getThemesIdList(); 
-
         if ($story->getId()) {
             $stmt->bindValue(':id', $story->getId());
             $stmt->bindValue(':created_at', $story->getCreatedAt()->format('Y-m-d H:i:s'));
@@ -206,7 +204,6 @@ class StoryManager extends BddManager
         } else {
             $stmt->bindValue(':created_at', date("Y-m-d H:i:s"));
             $stmt->bindValue(':slug', $this->generateSlug($story->getTitle()));
-
         }
 
         $stmt->execute();

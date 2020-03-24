@@ -1,15 +1,24 @@
-
 @import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
 
 h1, h2, h3, h4, h5, h6 { font-family: 'Oswald'}
-h1 { font-size: 2rem;}
-h2 { font-size: 1.8rem}
-h3 { font-size: 1.4rem}
-h4 { font-size: 1.2rem}
-h5 { font-size: 1rem}
+h1 { font-size: 1.9rem;}
+h2 { font-size: 1.7rem}
+h3 { font-size: 1.3rem}
+h4 { font-size: 1.1rem}
+h5 { font-size: 0.9rem}
 
-body { background-color: #ffbd69;}
+body { background-color: #ffbd69; font-size: 1em}
 main { padding: 0px 5%;}
+
+html { font-size: 1em;}
+
+.page-footer { background-color: #111d5e }
+
+/*
+textarea{  
+  /* box-sizing: padding-box; 
+  overflow:hidden;
+}*/
 
 [type="radio"]:checked + span:after,
 [type="radio"].with-gap:checked + span:before,
@@ -48,7 +57,7 @@ nav a { line-height: 2.7;}
         }
 .initials:hover { background-color: F48FBB;}        
         
-#headMenu { font-size: 3.4em; color: #F48FBB; cursor: pointer}
+#headMenu { font-size: 3em; color: #F48FBB; cursor: pointer}
 #contentMenu {  width: 100%; display: none; position: absolute; z-index: 999;}
 nav i { line-height: normal!important;}
 
@@ -64,7 +73,7 @@ nav i { line-height: normal!important;}
 /*** STORY INDEX ***/
 .rounded { border-radius: 40px; width: 50px; height: 50px; text-align: center; padding-top: 4px}
 .rounded i { font-size: 1.6rem}
-.addBigButton {  color: #111d5e; font-size: 2.2em;}
+.addBigButton {  color: #111d5e; font-size: 1.4em;}
 .titleLine { cursor: pointer ; color: #111d5e}
 .titleLine:hover, .lineList:hover a { color: #EE56A1}
 
@@ -103,3 +112,21 @@ nav i { line-height: normal!important;}
 .showInfoBelow i { font-size: 1rem}
 .blockInformationPersona { position: absolute; z-index: 50; width: 94%; background-color: lightyellow; padding: 10px 10px; border-radius: 5px;}
 
+
+/******* DEFINTION *******/
+.definitionBlock { border: 2px solid #EE56A1; border-radius: 4px; padding: 8px; background-color: white; margin-bottom: 6px;}
+
+.textSelected { margin: 10px 60px; padding: 10px; border: 1px solid #111d5e; border-radius: 10px}
+.textSelectedInTextarea { background-color: #ffbd69;}
+.textareaAnswerDefinition { min-height: 150px}
+.btnSelectWordDefinition { float: left;cursor: pointer }
+.submitFormDefinition {background-color: #EE56A1;float: right}
+.deleteWdefinition { float: right; color: darkred; font-weight: bold; cursor: pointer;}
+
+
+/***** SHOW DEFIN *****/
+.basicInput { width: auto!important; border: none; border-bottom: 1px solid black!important; height: 2rem!important; font-size: 1.1rem!important; text-align: center!important;}
+.keywordAnswerFull { color: darkblue!important; font-weight: bold!important;}
+.badAnswer { color: red!important}
+.goodAnswer { color: darkblue!important}
+.textAnswer { width: 85%; text-align: justify;}

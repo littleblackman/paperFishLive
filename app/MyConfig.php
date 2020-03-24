@@ -1,7 +1,5 @@
 <?php
 
-
-
 class MyConfig
 {
 
@@ -15,7 +13,6 @@ class MyConfig
         session_start();
 
         // création des constants
-
         $root = $_SERVER['DOCUMENT_ROOT'];
         $host = $_SERVER['HTTP_HOST'];
 

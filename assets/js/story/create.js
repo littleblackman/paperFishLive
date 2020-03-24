@@ -9,7 +9,8 @@ var personas = [];
 
 // show information
 $('.showInfoBelow').click(function() {
-    $(this).next().toggle('slow');
+    console.log('hello');
+    $(this).next().toggle('fast');
 })
 
 // show information type
@@ -47,6 +48,9 @@ $('#closePersonaForm').click(function(){
     $('#characterFormContent').hide('slow');
 })
 
+$(document).ready(function() {
+    $('textarea').autoResize();
+})
 // create list select THEME
 $('#data-theme').keyup(function() {
     let myString = $('#data-theme').val();

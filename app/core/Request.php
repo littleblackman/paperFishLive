@@ -66,5 +66,11 @@ class Request
         return $this->access;
     }
 
+    public function getAbsoluteUrl()
+    {
+      return HOST.$this->getRoute();
+    }
+
+
 
 }

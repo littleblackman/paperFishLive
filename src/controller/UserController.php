@@ -25,6 +25,11 @@ class UserController extends Controller
         }
     }
 
+    public function show() {
+        $user = $this->userManager->find($this->session->getUserId());
+        return $this->render('user/show', ['user' => $user]);
+    }
+
     public function auth() {
         $data = $this->request->get('data');
         if(!$this->authenticatorService->auth($data)) return $this->redirect('login');

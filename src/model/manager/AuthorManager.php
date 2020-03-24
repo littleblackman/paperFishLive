@@ -27,10 +27,9 @@ class AuthorManager extends BddManager
         if($object->getId()) $stmt->bindValue(':id', $object->getId());
         $stmt->execute();
 
-        $lastId = $this->getLastInsertId();
-        $author = $this->find($lastId);
+        $object = $this->updateObjectPersisted($object);
 
-        return $author;
+        return $object;
 
     }
 }

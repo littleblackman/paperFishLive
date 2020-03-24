@@ -3,13 +3,25 @@
 
 class HomeController extends Controller
 {
+
+    private $storyManager;
+    private $sheetManager;
+
+
+    public function __construct($request) {
+        parent::__construct($request);
+        $this->storyManager = new StoryManager();
+        $this->sheetManager = new SheetManager();
+    }
+
     public function index() {
-        if($this->session->isLogged() == 1) $this->redirect('dashboard');
         return $this->render('home/index');
     }
 
     public function dashboard() {
-        return $this->render('home/dashboard');
+        $storysPublic = $this->storyManager->findByVisibility('public');
+        $sheetsPublic = $this->sheetManager->findByVisibility('public');
+        return $this->render('home/dashboard', ['sheetsPublic' => $sheetsPublic, 'storysPublic' => $storysPublic]);
     }
 
     public function register() {

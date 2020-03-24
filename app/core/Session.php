@@ -48,6 +48,10 @@ class Session
         return $this->request;
     }
 
+    public function setRequest($request){
+        $this->request = $request;
+    }
+
     public function getUsername()
     {
       return $_SESSION['username'];

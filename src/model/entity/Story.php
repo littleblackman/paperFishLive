@@ -52,7 +52,6 @@ class Story extends BaseEntity
         $this->setCreatedAt(date('Y-m-d'));
         $this->setUpdatedAt(date('Y-m-d'));
         parent::__construct($data);
-
     }
 
     public function hydrate($data) {

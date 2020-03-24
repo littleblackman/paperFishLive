@@ -16,7 +16,6 @@
     <input type="hidden" name="data[updated_at]"  value="<?=$story->getUpdatedAt()->format('Y-m-d H:i:s');?>"/>
     <input type="hidden" name="data[slug]"  value="<?=$story->getSlug();?>"/>
 
-
     <div class="row">
         <input type="text" name="data[title]" value="<?=$story->getTitle();?>" placeholder="Titre" required/>
     </div>
@@ -206,19 +205,22 @@
     <div class="row">
         <h4>Information sur l'oeuvre</h4>
 
-        <?php ($story->getType() == "litterature") ? $display = "display: block" : $display = "display:none";?>
+        <?php if($story->getType() == "litterature") { $display = "display: block" ;} else { $display = "display:none" ;}?>
         <div id="litteratureInformationType" style="<?= $display;?>" class="informationType">
             <h4>Auteur</h4>
-            <input type="text" name="author[firstname]" placeholder="Prénom" value="<?php if($story->getBy()) echo $story->getBy()->getFirstname();?>"/>
-            <input type="text" name="author[lastname]" placeholder="Nom" value="<?php if($story->getBy()) echo $story->getBy()->getLastname();?>"/>
-            <textarea name="author[information]" placeholder="Information sur l'auteur"><?php if($story->getBy()) echo $story->getBy()->getInformation();?></textarea>
+            <input type="hidden" name="author[id]" value="<?php if($story->getAuthor()) echo $story->getAuthor()->getId();?>"/>
+            <input type="text" name="author[firstname]" placeholder="Prénom" value="<?php if($story->getAuthor()) echo $story->getAuthor()->getFirstname();?>"/>
+            <input type="text" name="author[lastname]" placeholder="Nom" value="<?php if($story->getAuthor()) echo $story->getAuthor()->getLastname();?>"/>
+            <textarea name="author[information]" placeholder="Information sur l'auteur"><?php if($story->getAuthor()) echo $story->getAuthor()->getInformation();?></textarea>
         </div>
-        <?php ($story->getType() == "cinema") ? $display = "display: block" : "display:none";?>
+
+        <?php if($story->getType() == "cinema") { $display = "display: block" ; } else { $display = "display:none" ;}?>
         <div id="cinemaInformationType" style="<?= $display;?>" class="informationType">
             <h4>Réalisateur</h4>
-            <input type="text" name="director[firstname]" placeholder="Prénom" value="<?php if($story->getBy()) echo $story->getBy()->getFirstname();?>"/>
-            <input type="text" name="director[lastname]" placeholder="Nom" value="<?php if($story->getBy()) echo $story->getBy()->getLastname();?>"/>
-            <textarea name="director[information]" placeholder="Information sur le réalisateur"><?php if($story->getBy()) echo $story->getBy()->getInformation();?></textarea>
+            <input type="hidden" name="director[id]" value="<?php if($story->getDirector()) echo $story->getDirector()->getId();?>"/>
+            <input type="text" name="director[firstname]" placeholder="Prénom" value="<?php if($story->getDirector()) echo $story->getDirector()->getFirstname();?>"/>
+            <input type="text" name="director[lastname]" placeholder="Nom" value="<?php if($story->getDirector()) echo $story->getDirector()->getLastname();?>"/>
+            <textarea name="director[information]" placeholder="Information sur le réalisateur"><?php if($story->getDirector()) echo $story->getDirector()->getInformation();?></textarea>
         </div>
 
     </div>

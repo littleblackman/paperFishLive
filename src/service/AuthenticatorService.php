@@ -11,7 +11,12 @@ class AuthenticatorService
         $this->userManager = new UserManager();
     }
 
-    public function autoconnect(){}
+    public function autoconnect($email, $password) {
+        if(!$user = $this->userManager->findByEmail($email)) return null;
+        if($user->getPassword() != $password) return null;
+        $this->session->initUserSession($user);
+        return true;
+    }
 
     public function auth($data) {
 

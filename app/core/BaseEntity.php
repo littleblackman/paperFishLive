@@ -35,4 +35,5 @@ abstract class BaseEntity
         $manager = new $managerName(); 
         $manager->delete($this->getId());
     }
+
 }
