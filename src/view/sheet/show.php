@@ -52,4 +52,8 @@
 
 <?php endforeach;?>
 
+<br/><br/><br/>
+<hr/>
+<?php $object = $sheet;?> 
+<?php include(VIEW.'home/_mainfooter.php');?>
 <script src="<?= JS ;?>sheet/show.js"></script>

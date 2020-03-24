@@ -4,6 +4,9 @@
 class Session
 {
 
+    private $titlePage;
+    private $descriptionPage;
+
     public function __construct() {
         $this->flashMessage = new FlashMessage();
     }
@@ -84,5 +87,39 @@ class Session
 
     public function getAccess() {
         return $_SESSION['access'];
+    }
+
+    public function getDescriptionPage() {
+        if(!$this->descriptionPage) return DEFAULT_PAGE_DESCRIPTION;
+        return $this->descriptionPage;
+    }
+
+    public function getTitlePage() {
+        if(!$this->titlePage) return DEFAULT_PAGE_TITLE;
+        return $this->titlePage;
+    }
+
+    /**
+     * Set the value of titlePage
+     *
+     * @return  self
+     */ 
+    public function setTitlePage($titlePage)
+    {
+        $this->titlePage = $titlePage;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of descriptionPage
+     *
+     * @return  self
+     */ 
+    public function setDescriptionPage($descriptionPage)
+    {
+        $this->descriptionPage = $descriptionPage;
+
+        return $this;
     }
 }

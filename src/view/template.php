@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Paper Fish</title>
+    <title><?= $app_session->getTitlePage();?></title>
 
-    <meta name="description" content="PaperFish est une application de gestion de fiches dédiée à l'apprentissage : vous pouvez créer des fiches de définitions, comme des fiches des lectures de romans ou de films" />
+    <meta name="description" content="<?= $app_session->getDescriptionPage();?>" />
     <meta name="generator" content="ETSIK FRAMEWORK" />
     <meta name="publisher" content="Sandy Razafitrimo - ETSIK" />
     <meta name="author" content="Sandy Razafitrimo, littleblackman, etsik" />
@@ -13,33 +13,41 @@
     <meta http-equiv="pragma" content="no-cache" />
     <meta name="robots" content="index,follow" />
 
-    <!-- favicon  -->
-    <link rel="apple-touch-icon" sizes="57x57" href="<?= ASSETS;?>favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="<?= ASSETS;?>favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="<?= ASSETS;?>favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="<?= ASSETS;?>favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="<?= ASSETS;?>favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="<?= ASSETS;?>favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="<?= ASSETS;?>favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="<?= ASSETS;?>favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="<?= ASSETS;?>favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="<?= ASSETS;?>favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?= ASSETS;?>favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="<?= ASSETS;?>favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= ASSETS;?>favicon/favicon-16x16.png">
-    <link rel= "manifest" href= "<?= HOST;?>manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="<?= ASSETS;?>favicon/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+    <!-- manifest  -->
+    <link rel="icon" type="image/png" href="<?= IMG;?>paperfish-266x266.png" />
 
+    <link rel= "manifest" href= "<?= HOST;?>manifest.json">
+    <meta name="msapplication-TileColor" content="#111d5e">
+    <meta name="msapplication-TileImage" content="<?= ASSETS;?>favicon/ms-icon-144x144.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="paperFish">
+    <meta name="apple-mobile-web-app-title" content="paperFish">
+    <meta name="theme-color" content="#ffbd69">
+    <meta name="msapplication-navbutton-color" content="#ffbd69">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="www.paperfish.io">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="apple-touch-icon" href="<?= ASSETS;?>favicon/android-icon-192x192-dunplab-manifest-1324.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="<?= ASSETS;?>favicon/apple-icon-152x152-dunplab-manifest-1324.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= ASSETS;?>favicon/apple-icon-180x180-dunplab-manifest-1324.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="<?= ASSETS;?>favicon/apple-icon-152x152-dunplab-manifest-1324.png">
+
+
+        <!-- twitter card -->
+    <meta name="twitter:card" content="PaperFish, Outil de création de fiches" />
+    <meta name="twitter:site" content="www.paperfish.io" />
+    <meta name="twitter:creator" content="@littleblackman" />
 
      <!-- opengraph --->
-    <meta property="og:title" content="PaperFish, Outil de création de fiches" />
+    <meta property="og:title" content="<?= $app_session->getTitlePage();?>" />
     <meta property="og:type" content="application" />
     <meta property="og:url" content="<?= $app_session->getRequest()->getAbsoluteUrl();?>" />
-    <meta property="og:image" content="<?= IMG;?>paperfish.png" />
+    <meta property="og:description" content="<?= $app_session->getDescriptionPage();?>" />
 
-
+    <meta property="og:image" content="<?= IMG;?>paperfish-266x266.jpg" />
+  
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     

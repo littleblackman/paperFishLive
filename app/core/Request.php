@@ -10,6 +10,7 @@ class Request
     private $controller;
     private $method;
     private $access;
+    private $absoluteUrl;
 
 
     public function setRoute($route)
@@ -66,11 +67,23 @@ class Request
         return $this->access;
     }
 
+    /**
+     * Get the value of absoluteUrl
+     */ 
     public function getAbsoluteUrl()
     {
-      return HOST.$this->getRoute();
+        return HOST.$this->absoluteUrl;
     }
 
+    /**
+     * Set the value of absoluteUrl
+     *
+     * @return  self
+     */ 
+    public function setAbsoluteUrl($absoluteUrl)
+    {
+        $this->absoluteUrl = $absoluteUrl;
 
-
+        return $this;
+    }
 }

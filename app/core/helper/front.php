@@ -14,6 +14,7 @@ function path($name, $var = null) {
 }
 
 function is_owner($object) {
+    if(!isset($_SESSION['auth'])) return false;
     if($object->getOwnerId() != $_SESSION['user_id']) return false;
     return true;
 }

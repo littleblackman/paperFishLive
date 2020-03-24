@@ -28,9 +28,9 @@ class StoryController extends Controller
 
     public function show() {
         $story = $this->storyManager->findBySlug($this->request->get('slug'));
-
-        // check if is user is allowed to show
-
+        if($story->getVisibility() == "private" && !$this->isOwner($story)) return $this->redirect('403');
+        $this->session->setTitlePage($story->getTitle().' sur PaperFish');
+        $this->session->setDescriptionPage('Fiche lecture et cinéma - '.$story->getTitle().' - '.$story->getResume());        
         $this->render('story/show', ['story' => $story]);
     }
 

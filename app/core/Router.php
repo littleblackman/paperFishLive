@@ -54,6 +54,7 @@ class Router
         $request->setController($controller);
         $request->setMethod($method);
         $request->setAccess($access);
+        $request->setAbsoluteUrl($action);
 
         $this->request = $request;  
 

@@ -1,19 +1,80 @@
 {
-    "lang" : "fr",
-    "dir" : "ltr",
-    "name" : "PAPERFISH - Création de fiches",
-    "short_name" : "paperFish",
-    "icons" :   [
-      {
-        "src" : "assets/img/favicon/android-chrome-192x192.png",
-        "sizes" : "192x192",
-        "type" : "image/png"
-      }
-    ],
-    "theme_color" : "#ef9a9a",
-    "background_color" : "#ffffff",
-    "start_url" : "/",
-    "display" : "standalone",
-    "orientation" : "natural"
+  "short_name": "paperFish",
+  "name": "Paper Fish",
+  "lang": "fr-FR",
+  "description": "Application de création de fiches de révision",
+  "start_url": "/",
+  "background_color": "#111d5e",
+  "theme_color": "#ee56a1",
+  "dir": "ltr",
+  "display": "standalone",
+  "orientation": "any",
+  "icons": [
+   {
+    "src": "assets/favicon/android-icon-192x192-dunplab-manifest-1324.png",
+    "type": "image/png",
+    "sizes": "192x192"
+   },
+   {
+    "src": "assets/favicon/apple-icon-180x180-dunplab-manifest-1324.png",
+    "type": "image/png",
+    "sizes": "180x180"
+   },
+   {
+    "src": "assets/favicon/apple-icon-152x152-dunplab-manifest-1324.png",
+    "type": "image/png",
+    "sizes": "152x152"
+   },
+   {
+    "src": "assets/favicon/apple-icon-144x144-dunplab-manifest-1324.png",
+    "type": "image/png",
+    "sizes": "144x144"
+   },
+   {
+    "src": "assets/faviconapple-icon-120x120-dunplab-manifest-1324.png",
+    "type": "image/png",
+    "sizes": "120x120"
+   },
+   {
+    "src": "assets/favicon/apple-icon-114x114-dunplab-manifest-1324.png",
+    "type": "image/png",
+    "sizes": "114x114"
+   },
+   {
+    "src": "assets/favicon/favicon-96x96-dunplab-manifest-1324.png",
+    "type": "image/png",
+    "sizes": "96x96"
+   },
+   {
+    "src": "assets/favicon/apple-icon-76x76-dunplab-manifest-1324.png",
+    "type": "image/png",
+    "sizes": "76x76"
+   },
+   {
+    "src": "assets/favicon/apple-icon-72x72-dunplab-manifest-1324.png",
+    "type": "image/png",
+    "sizes": "72x72"
+   },
+   {
+    "src": "assets/favicon/apple-icon-60x60-dunplab-manifest-1324.png",
+    "type": "image/png",
+    "sizes": "60x60"
+   },
+   {
+    "src": "assets/favicon/apple-icon-57x57-dunplab-manifest-1324.png",
+    "type": "image/png",
+    "sizes": "57x57"
+   },
+   {
+    "src": "assets/favicon/favicon-32x32-dunplab-manifest-1324.png",
+    "type": "image/png",
+    "sizes": "32x32"
+   },
+   {
+    "src": "assets/favicon/favicon-16x16-dunplab-manifest-1324.png",
+    "type": "image/png",
+    "sizes": "16x16"
    }
-   
+  ],
+  "prefer_related_applications": false
+ }

@@ -60,4 +60,9 @@
 <h3>Quelques mots sur <?= $story->getByName();?></h3>
 <p><?= $story->getBy()->getInformation();?>
 
+
+<br/><br/><br/>
+<hr/>
+<?php $object = $story;?> 
+<?php include(VIEW.'home/_mainfooter.php');?>
 <script src="<?= JS ;?>story/show.js"></script>

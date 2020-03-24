@@ -46,6 +46,9 @@ class MyConfig
         define('DB_LOGIN', $params['bdd']['DB_LOGIN']);
         define('DB_PWD', $params['bdd']['DB_PWD']);
 
+        define('DEFAULT_PAGE_TITLE', $params['default']['PAGE_TITLE']);
+        define('DEFAULT_PAGE_DESCRIPTION', $params['default']['PAGE_DESCRIPTION']);
+
         define('ENV', $params['app']['env']);
 
         require_once(CONFIG.'functions.php');

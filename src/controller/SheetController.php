@@ -15,7 +15,6 @@ class SheetController extends Controller
     }
     
     public function index() {
-
         $sheetsUser   = $this->sheetManager->findByUser($this->session->getUserId());
         $sheetsPublic = $this->sheetManager->findByVisibility('public');
         $this->render('sheet/index', ['sheetsUser' => $sheetsUser, 'sheetsPublic' => $sheetsPublic]);
@@ -30,9 +29,9 @@ class SheetController extends Controller
 
     public function show() {
         $sheet = $this->sheetManager->findBySlug($this->request->get('slug'));
-
-        // check if is user is allowed to show
-
+        if($sheet->getVisibility() == "private" && !$this->isOwner($sheet)) return $this->redirect('403');
+        $this->session->setTitlePage($sheet->getTitle().' sur PaperFish');
+        $this->session->setDescriptionPage('Fiche révision et définitions - '.$sheet->getTitle().' - '.$sheet->getDescription());        
         $this->render('sheet/show', ['sheet' => $sheet]);
     }
 
