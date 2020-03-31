@@ -64,8 +64,6 @@
 
     <script src="https://unpkg.com/gojs/release/go-debug.js"></script>
 
-    <script src="<?= JS;?>textareaAutoResize.js"></script>
-
 </head>
 <body>
     <?php include(CORE.'template/sessionBarContent.php');?>

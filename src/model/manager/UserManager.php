@@ -22,12 +22,13 @@ class UserManager extends BddManager
         if(!$this->validData($data)) return ['Problème sur votre inscription', 'error']; 
 
         $password = password_hash($data['password'], PASSWORD_BCRYPT);
-        $query = "INSERT INTO user SET email = :email, password = :password, firstname = :firstname, lastname = :lastname";
+        $query = "INSERT INTO user SET role = 'user', created_at = :created_at, email = :email, password = :password, firstname = :firstname, lastname = :lastname";
         $stmt = $this->prepare($query);
         $stmt->bindValue(':email', $data['email']);
         $stmt->bindValue(':password', $password);
         $stmt->bindValue(':firstname', $data['firstname']);
         $stmt->bindValue(':lastname', $data['lastname']);
+        $stmt->bindValue(':created_at', date("Y-m-d H:i:s"));
         $stmt->execute();
         return ['Super, votre compte a bien été créé, vous pouvez vous connecter', 'success'];
     }

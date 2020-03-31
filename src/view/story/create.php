@@ -34,7 +34,7 @@
         Résumé
     </h4>
     <div id="row">
-        <textarea name="data[resume]" id="data-resume" placeholder="Résumé" required><?=$story->getResume();?></textarea>
+        <textarea name="data[resume]" id="data-resume"  data-autoresize rows="3" placeholder="Résumé" required><?=$story->getResume();?></textarea>
     </div>
     <b>Aide à la création de résumé</b><i class="material-icons iconRight showInfoBelow">add_circle</i>    
     <div id="" class="row blockInformation">

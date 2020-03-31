@@ -13,10 +13,6 @@
     </div>
 </p>
 
-
-
-
-
 <script>
 var btncopy = document.querySelector('.js-copy');
 if(btncopy) {
